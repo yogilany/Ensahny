@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 
 import Profile from "@components/Profile";
 
-const MyProfile = () => {
+const MyProfile = ({ params }) => {
   const router = useRouter();
   const { data: session } = useSession();
+  // console.log('otherUser', otherUser)
+  console.log('params', params)
 
 
 
@@ -17,7 +19,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const response = await fetch(`/api/users/${params.id}/posts`);
       const data = await response.json();
 
       setMyPosts(data);
@@ -52,12 +54,12 @@ const MyProfile = () => {
 
   return (
     session && <Profile
-      name='بروفايلي'
+      myProfile={params.id == session?.user.id   ? true : false}
       desc='آهلاً بيك في بروفايلك الشخصي. هنا هتلاقي كل نصايحك السابقة واللي ممكن تعدلها أو تحذفها.'
       data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
-      user={session?.user}
+      user={params.id || session?.user.id}
     />
   );
 };

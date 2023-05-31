@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import LikeButton from "@components/LikeButton";
+import Link from "next/link";
 
 const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const likesCount = post?.likes.length;
   //   console.log("likesCount", post?.likes.length)
-  console.log("post", post);
+  // console.log("post", post);
 
   const [copied, setCopied] = useState("");
 
@@ -65,8 +66,9 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             height={12}
           />
         </div>
+        <Link href={`/profile/${post?.creator?._id}`}>
+
         <div className="flex flex-1 justify-end items-center gap-3 cursor-pointer">
-  
           <div className="flex flex-col  ">
             <h3 className=" font-readex font-semibold text-gray-700">
               {post?.is_hidden ? "شخص مجهول" : post?.creator.username}
@@ -89,7 +91,8 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             className="rounded-full  object-contain"
           />
         </div>
-        
+        </Link>
+
       </div>
       <p className="my-4 font-readex text-sm text-gray-700">{post.content}</p>
      
