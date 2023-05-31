@@ -18,7 +18,6 @@ const Feed = () => {
   }
 
   useEffect(() => {
-    console.log("loading", loading);
     const fetchPosts = async () => {
         setLoading(true);
         var url = "/api/post";
@@ -36,7 +35,6 @@ const Feed = () => {
 
       const res = await fetch(url);
       const data = await res.json();
-      console.log("data", data);
       setPosts(data);
       setLoading(false);
 
@@ -45,7 +43,6 @@ const Feed = () => {
     fetchPosts();
     console.log("Feed mounted");
     
-    console.log("loading", loading);
 
   }, [searchQuery, tagQuery]);
 
@@ -67,7 +64,7 @@ const Feed = () => {
         <div role="status" className=" flex-1 mt-24  text-center   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-12  backdrop-blur-lg backdrop-filter  w-full h-fit">
           <svg
             aria-hidden="true"
-            class="inline w-24 h-24 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"
+            className="inline w-24 h-24 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +78,7 @@ const Feed = () => {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
         </>
       ) : (

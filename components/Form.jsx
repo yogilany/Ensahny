@@ -35,10 +35,10 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             required
           ></input>
         </label>
-        <div class="flex-end  mb-4">
+        <div className="flex-end  mb-4">
           <label
             for="default-checkbox"
-            class="font-readex font-semibold text-base text-gray-700"
+            className="font-readex font-semibold text-base text-gray-700"
           >
             {" "}
             اجعل ظهوري مخفياً
@@ -48,7 +48,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             type="checkbox"
             checked={post.is_hidden}
             onChange={(e) => setPost({ ...post, is_hidden: e.target.checked })}
-            class="w-4 h-4 mx-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            className="w-4 h-4 mx-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
           />
         </div>
         <div className="flex-end mx-3 mb-5 gap-4">

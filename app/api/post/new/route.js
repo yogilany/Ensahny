@@ -4,11 +4,6 @@ import { ObjectId } from "mongodb";
 
 export const POST = async (req, res) => {
   const { tag, content, userId, is_hidden } = await req.json();
-  console.log("tag in API", tag);
-    console.log("content in API", content);
-    console.log("userId in API", userId);
-    console.log("is_hidden in API", is_hidden);
-
 
   try {
     connectToDatabase();

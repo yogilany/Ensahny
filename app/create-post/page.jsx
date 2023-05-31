@@ -36,7 +36,6 @@ const CreatePost = () => {
                 throw Error(json.message)
             }
             else{
-                console.log(json)
                 setPost({content: '', tag: '', isHidden: false})
                 router.push('/')
 

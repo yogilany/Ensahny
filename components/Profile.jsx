@@ -34,7 +34,7 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
          
           <svg
             aria-hidden="true"
-            class="inline w-16 h-16  text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"
+            className="inline w-16 h-16  text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
       ) : (
         <div className="flex justify-end">
           <img
-            class="rounded w-36 h-36  "
+            className="rounded w-36 h-36  "
             src={userData.image}
             alt="Extra large avatar"
           />

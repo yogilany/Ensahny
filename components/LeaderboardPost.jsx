@@ -8,7 +8,6 @@ import LikeButton from "@components/LikeButton";
 const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
   const likesCount = post?.likes.length;
-//   console.log("likesCount", post?.likes.length)
 
 
   const [copied, setCopied] = useState("");

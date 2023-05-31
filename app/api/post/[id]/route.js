@@ -17,7 +17,6 @@ export const GET = async (request, { params }) => {
 
 export const PATCH = async (request, { params }) => {
     const { content, tag } = await request.json();
-    console.log("PATCHHH in API", content, tag);
 
     try {
         await connectToDatabase();

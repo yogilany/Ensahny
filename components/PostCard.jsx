@@ -8,8 +8,7 @@ import Link from "next/link";
 
 const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const likesCount = post?.likes.length;
-  //   console.log("likesCount", post?.likes.length)
-  // console.log("post", post);
+
 
   const [copied, setCopied] = useState("");
 
