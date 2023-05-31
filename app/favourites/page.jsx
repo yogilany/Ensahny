@@ -26,7 +26,7 @@ const Favouraites = () => {
 
   return (
     <section className='mt-8 mx-auto w-full max-w-5xl flex justify-center items-center flex-col gap-2'>
- <h1 className="h-24 underline underline-offset-3 decoration-8 decoration-orange-600  mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400  text-center   ">نصايحي المفضلة  
+ <h1 className=" underline underline-offset-3 decoration-8 decoration-orange-600  h-20 mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-black   text-center   ">نصايحي المفضلة   
         </h1>
 <PostCardList
         posts={posts}

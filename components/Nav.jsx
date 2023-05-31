@@ -40,7 +40,7 @@ const Nav = () => {
       {/* DESKTOP */}
       <div className=" sm:flex hidden">
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5">
+          <div className="flex gap-2 md:gap-3">
             <Link href="/create-post" className="black_btn font-readex">
               أضف نصيحة
             </Link>

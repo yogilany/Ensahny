@@ -5,10 +5,13 @@ import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import LikeButton from "@components/LikeButton";
 
-const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => {
-
+const LeaderboardPost = ({
+  post,
+  handleTagClick,
+  handleEdit,
+  handleDelete,
+}) => {
   const likesCount = post?.likes.length;
-
 
   const [copied, setCopied] = useState("");
 
@@ -23,37 +26,30 @@ const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => 
     setTimeout(() => setCopied(false), 3000);
   };
 
-
-
-  function handleLikeClick(){
- 
+  function handleLikeClick() {
     // get the user id
-    const userId = session?.user.id
+    const userId = session?.user.id;
     // get the post id
-    const postId = post._id
+    const postId = post._id;
     // if the user has liked the post, remove the like using mongoose
-    try{
-        const res = fetch(`/api/post/like/${postId}`, {
-        method: 'PATCH',
+    try {
+      const res = fetch(`/api/post/like/${postId}`, {
+        method: "PATCH",
         body: JSON.stringify({
-            userId: userId,
-        })
-        })
+          userId: userId,
+        }),
+      });
 
-        if(res.ok){
-            console.log("Like added")
-        }
+      if (res.ok) {
+        console.log("Like added");
+      }
+    } catch (e) {
+      console.log("Opps! Something went wrong");
+
+      console.log(e.message);
+      throw Error(e.message);
     }
-    catch(e){
-        console.log("Opps! Something went wrong")
-    
-        console.log(e.message)
-        throw Error(e.message)
-    }
-
-
-
-}
+  }
 
   return (
     <div className=" text-center items-end flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-fit">
@@ -70,25 +66,24 @@ const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => 
             <h3 className=" font-satoshi font-semibold text-gray-900">
               {post?.creator.username}
             </h3>
-            <p className=" font-inter text-xs text-gray-500">
+            {/* <p className=" font-inter text-xs text-gray-500">
               {post?.creator.email}
-            </p>
+            </p> */}
           </div>
         </div>
-
-        
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700 text-right items-end">{post.content}</p>
+      <p className="my-4 font-readex text-center text-md text-gray-700">
+        {post.content}
+      </p>
       <p
-        className="font-inter text-sm blue_gradient cursor-pointer text-right"
+        className="font-readex text-xs blue_gradient cursor-pointer text-center"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         #{post.tag}
       </p>
-     
-      <div className="flex flex-row items-center justify-end">
 
-     <div className="copy_btn mx-4" onClick={handleCopy}>
+      <div className="flex flex-row items-center justify-between ">
+        <div className="copy_btn mx-4" onClick={handleCopy}>
           <Image
             src={
               copied === post.prompt
@@ -100,13 +95,15 @@ const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => 
             height={12}
           />
         </div>
-<LikeButton isAuthenticated={ session?.user?.id ? true : false} OnClick={handleLikeClick}  likesCount={likesCount} isLiked={post?.likes?.some(like => like == session?.user?.id)}/>
-</div>
+        <LikeButton
+          isAuthenticated={session?.user?.id ? true : false}
+          OnClick={handleLikeClick}
+          likesCount={likesCount}
+          isLiked={post?.likes?.some((like) => like == session?.user?.id)}
+        />
+      </div>
 
-      {
-      
-      
-      session?.user.id === post.creator._id && pathName === "/profile" && (
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"

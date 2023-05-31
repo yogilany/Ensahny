@@ -103,12 +103,12 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       >
         #{post.tag}
       </p>
-        <LikeButton
+        {session && <LikeButton
           isAuthenticated={session?.user?.id ? true : false}
           OnClick={handleLikeClick}
           likesCount={likesCount}
           isLiked={post?.likes?.some((like) => like == session?.user?.id)}
-        />
+        /> }
         
       </div>
 
