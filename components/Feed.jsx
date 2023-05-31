@@ -21,8 +21,20 @@ const Feed = () => {
     console.log("loading", loading);
     const fetchPosts = async () => {
         setLoading(true);
+        var url = "/api/post";
 
-      const res = await fetch(`/api/post?param=${searchQuery}&tag=${tagQuery}`);
+        var params = {
+          param: searchQuery,
+          tag: tagQuery
+        };
+        
+        // Convert the parameters object to a query string
+        var queryString = Object.keys(params).map(key => key + '=' + encodeURIComponent(params[key])).join('&');
+        
+        // Append the query string to the URL
+        url = url + '?' + queryString;
+
+      const res = await fetch(url);
       const data = await res.json();
       console.log("data", data);
       setPosts(data);

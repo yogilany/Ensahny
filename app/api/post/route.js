@@ -13,11 +13,13 @@ export const GET = async (req, res) => {
         const sortParam = params.get("sort");
         const limitParam = params.get("limit");
 
+        const paramValue = decodeURIComponent(req.url.split('=')[2]);
 
         console.log("sortParam in API", sortParam);
+        console.log("paramValue in API", paramValue);
 
 
-            const posts = await Post.find( tagParam ?{tag: tagParam} :{$or: [{content: { $regex: param ? param : "", $options: "i" }}, {tag: { $regex: param ? param : "", $options: "i" }}]} ).populate("creator").sort( sortParam ? {[sortParam]: -1}: {"created_at": -1} ).limit( limitParam ? parseInt(limitParam) : 100);
+            const posts = await Post.find( tagParam ?{tag: tagParam} :{$or: [{content: { $regex: param ? param : "", $options: "i" }}, {tag: { $regex: param ? param : "", $options: "i" }}]} ).populate("creator").sort( sortParam ? {[sortParam]: -1, "created_at": -1 }: {"created_at": -1} ).limit( limitParam ? parseInt(limitParam) : 100);
 
             return new Response(JSON.stringify(posts), {
                 status: 200,
