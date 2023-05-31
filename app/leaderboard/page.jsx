@@ -22,7 +22,7 @@ const Leaderboard = () => {
     }, [])
 
   return (
-    <section className='mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2'>
+    <section className='mt-8 mx-auto w-full max-w-4xl flex justify-center items-center flex-col gap-2'>
  <h1 className="head_text text-center font-readex font-bold ">Leaderboard  
         </h1>
 <LeaderboardList

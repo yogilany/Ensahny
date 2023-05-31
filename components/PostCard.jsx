@@ -58,27 +58,9 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 }
 
   return (
-    <div className="flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit">
+    <div className="flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter  w-full h-fit">
       <div className="flex justify-between items-start gap-0.5">
-        <div className="flex flex-1 justify-start items-start gap-3 cursor-pointer">
-          <Image
-            src={post?.creator?.image}
-            width={30}
-            height={30}
-            alt="profile"
-            className="rounded-full object-contain"
-          />
-          <div className="flex flex-col">
-            <h3 className=" font-satoshi font-semibold text-gray-900">
-              {post?.creator.username}
-            </h3>
-            <p className=" font-inter text-sm text-gray-500">
-              {post?.creator.email}
-            </p>
-          </div>
-        </div>
-
-        <div className="copy_btn" onClick={handleCopy}>
+      <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={
               copied === post.prompt
@@ -90,6 +72,28 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             height={12}
           />
         </div>
+        <div className="flex flex-1 justify-end items-center gap-3 cursor-pointer">
+        
+          <div className="flex flex-col  ">
+            <h3 className=" font-readex font-semibold text-gray-700">
+              
+              {post?.is_hidden? "شخص مجهول" : post?.creator.username}
+            </h3>
+            {/* <p className=" font-inter text-sm text-gray-500">
+              {post?.creator.email}
+            </p> */}
+          </div>
+          <Image
+            src={post?.is_hidden? "/assets/images/unknown.png" : post?.creator?.image}
+            width={30}
+            height={30}
+            alt="profile"
+            className="rounded-full  object-contain"
+          />
+        </div>
+     
+
+
       </div>
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.content}</p>
       <p

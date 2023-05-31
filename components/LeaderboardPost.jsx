@@ -57,7 +57,7 @@ const LeaderboardPost = ({ post, handleTagClick, handleEdit, handleDelete }) => 
 }
 
   return (
-    <div className=" text-center items-end flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter sm:w-[500px] md:w-[850px] w-96 h-fit">
+    <div className=" text-center items-end flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-fit">
       <div className="flex justify-between items-center gap-0.5">
         <div className="flex flex-1 flex-col justify-center items-center gap-3 cursor-pointer">
           <Image
