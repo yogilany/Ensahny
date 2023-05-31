@@ -10,6 +10,9 @@ const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
+
+
+
   const [myPosts, setMyPosts] = useState([]);
 
   useEffect(() => {
@@ -54,6 +57,7 @@ const MyProfile = () => {
       data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
+      user={session?.user}
     />
   );
 };

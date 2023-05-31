@@ -42,14 +42,14 @@ const LikeButton = ({ isLiked, OnClick, isAuthenticated, likesCount }) => {
           className="w-4 h-4  "
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>
@@ -58,14 +58,14 @@ const LikeButton = ({ isLiked, OnClick, isAuthenticated, likesCount }) => {
           className="w-4 h-4 transition-all  "
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>
