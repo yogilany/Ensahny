@@ -58,7 +58,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 }
 
   return (
-    <div className="flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter  w-full h-fit">
+    <div className="flex-1  text-right   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter  w-full h-fit">
       <div className="flex justify-between items-start gap-0.5">
       <div className="copy_btn" onClick={handleCopy}>
           <Image
