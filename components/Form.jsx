@@ -3,7 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const MAXCHARACTER =300;
   const [selectedValue, setSelectedValue] = useState("");
+  const [textareaLength, setTextareaLength] = useState(0);
+
 
   // console.log("post", post);
 
@@ -48,12 +51,24 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             محتوى نصيحتك{" "}
           </span>
           <textarea
+            // style={{ whiteSpace: "pre-wrap" }}
             value={post.content}
-            onChange={(e) => setPost({ ...post, content: e.target.value })}
+            onChange={(e) => {setPost({ ...post, content: e.target.value })
+          
+          setTextareaLength(e.target.value.length)
+          }}
             className="form_textarea min-h-[100px]"
             placeholder="قم بإضافة نصيحتك هنا"
             required
+            maxLength={MAXCHARACTER}
+
+
           ></textarea>
+          <span className={`text-left font-light text-xs text-gray-500 font-readex ${
+            textareaLength == MAXCHARACTER ? "text-red-500" : "text-gray-500"
+          }`}>
+            {textareaLength}/{MAXCHARACTER}
+          </span>
         </label>
         <label className="flex items-end flex-col">
           <span className="font-readex font-semibold text-base text-gray-700">

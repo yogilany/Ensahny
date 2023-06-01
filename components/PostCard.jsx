@@ -146,7 +146,7 @@ const PostCard = ({
           </div>
         </Link>
       </div>
-      <p className="my-4 font-readex text-sm text-gray-700">{post.content}</p>
+      <p className="my-4 font-readex text-sm text-gray-700" style={{whiteSpace: "pre-line"}}>{post.content}</p>
 
       <p
         className="font-readex text-xs blue_gradient cursor-pointer "
