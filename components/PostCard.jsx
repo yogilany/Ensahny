@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import LikeButton from "@components/LikeButton";
 import Link from "next/link";
+import Dropdown from "./Dropdown";
 
 const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCategoryClick }) => {
   const likesCount = post?.likes.length;
@@ -91,18 +92,21 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCatego
   return (
     <div className="flex-1  text-right    break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-fit">
       <div className="flex justify-between items-start gap-0.5">
-      <div className="copy_btn" onClick={handleCopy}>
-          <Image
-            src={
-              copied === post.prompt
-                ? "/assets/icons/tick.svg"
-                : "/assets/icons/copy.svg"
-            }
-            alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-            width={12}
-            height={12}
-          />
+      {
+        session?.user.id === post?.creator?._id   && pathName === `/profile/${post?.creator?._id}` ?
+        <Dropdown handleDelete={handleDelete} handleEdit={handleEdit} handleCopy={handleCopy} />
+:
+        <div className="copy_btn" onClick={handleCopy}>
+          <button         className="text-gray-400 border border-gray-400 hover:bg-gray-300 hover:text-white active:bg-gray-400 active:outline-none active:text-white  font-medium rounded-lg text-xs  p-1 text-center inline-flex items-center mr-2  "
+
+
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path clip-rule="evenodd" fill-rule="evenodd" d="M13.887 3.182c.396.037.79.08 1.183.128C16.194 3.45 17 4.414 17 5.517V16.75A2.25 2.25 0 0114.75 19h-9.5A2.25 2.25 0 013 16.75V5.517c0-1.103.806-2.068 1.93-2.207.393-.048.787-.09 1.183-.128A3.001 3.001 0 019 1h2c1.373 0 2.531.923 2.887 2.182zM7.5 4A1.5 1.5 0 019 2.5h2A1.5 1.5 0 0112.5 4v.5h-5V4z"></path>
+</svg>
+            </button>
         </div>
+}
         
 
 
@@ -159,20 +163,21 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCatego
         /> }
         
       </div>
+    
 
-      {session?.user.id === post?.creator?._id && (
+      {session?.user.id === post?.creator?._id   && pathName === `/profile/${post?.creator?._id}` && (
         <div className=" flex-center gap-4 border-t border-gray-100 pt-3">
           <p
-            className="font-inter text-sm green_gradient cursor-pointer"
+            className="font-readex text-sm green_gradient cursor-pointer"
             onClick={handleEdit}
           >
-            Edit
+            تعديل
           </p>
           <p
-            className="font-inter text-sm orange_gradient cursor-pointer"
+            className="font-readex text-sm orange_gradient cursor-pointer"
             onClick={handleDelete}
           >
-            Delete
+            إزالة
           </p>
         </div>
       )}

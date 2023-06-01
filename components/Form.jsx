@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
+  console.log("post", post);
+
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -113,7 +115,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           />
         </div>
         <div className="flex-end mx-3 mb-5 gap-4">
-          <Link href="/" className="text-gray-500 text-sm font-readex">
+          
+          <Link href={`/profile/${post?.creator._id}`} className="text-gray-500 text-sm font-readex">
+            
             إلـــغــــــــــــــــــاء
           </Link>
           <button type="submit" className="black_btn" disabled={submitting}>

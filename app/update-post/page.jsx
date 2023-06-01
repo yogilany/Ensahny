@@ -13,16 +13,22 @@ const EditPost = () => {
     const postID = searchParams.get('id')
 
     const [submitting, setSubmitting] = useState(false)
-    const [post, setPost] = useState({  content: '', tag: '' })
+    const [post, setPost] = useState({  content: '', tag: '', is_hidden: false, category:"", creator: {} })
 
 
     useEffect(() => {
         const getPostDetails = async () => {
             const res = await fetch(`/api/post/${postID}`)
             const data = await res.json()
+            console.log('dataaaaa 333', data)
             setPost({
                 content: data.content,
-                tag: data.tag
+                tag: data.tag,
+                is_hidden: data.is_hidden,
+                category: data.category,
+                creator: data.creator
+
+                
             })
         }
 
