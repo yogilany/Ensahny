@@ -163,7 +163,6 @@ const Feed = () => {
 {tagClicked ? tagQuery : null}
 
   <button onClick={() => {
-    notify();
 
     setTagClicked(false)
     setTagQuery("")
