@@ -28,9 +28,9 @@ export const GET = async (req, res) => {
         tagParam ? { tag: { $regex: tagParam, $options: "i" } } :
 {
         $or: [
-            { category: { $regex: categoryParam, $options: "i" } },
-            { content: { $regex: param, $options: "i" } },
-            { tag: { $regex: tagParam, $options: "i" } },
+            { category: { $regex: param ? param : "", $options: "i" } },
+            { content: { $regex: param ? param : "", $options: "i" } },
+            { tag: { $regex: param ? param : "", $options: "i" } },
 
         ],
         is_hidden: false,
@@ -42,12 +42,13 @@ export const GET = async (req, res) => {
           .limit(limitParam ? parseInt(limitParam) : 100);
 
         // add the posts that are hidden put not the creator. don't return the creator
-    const hiddenPosts = await Post.find({
-        category: categoryParam ? categoryParam : { $exists: true || false },
-
+    const hiddenPosts = await Post.find(
+      categoryParam ? { category: categoryParam }:
+      tagParam ? { tag: { $regex: tagParam, $options: "i" } } : 
+      {
         $or: [
-            { content: { $regex: param, $options: "i" } },
-            { tag: { $regex: tagParam, $options: "i" } },
+            { content: { $regex: param ? param : "", $options: "i" } },
+            { tag: { $regex: param ? param : "", $options: "i" } },
         ],
         is_hidden: true,
     })
@@ -60,7 +61,10 @@ export const GET = async (req, res) => {
     // add the hidden posts to the posts array
     posts.push(...hiddenPosts);
     // sort the posts by date
-    posts.sort((a, b) => b.created_at - a.created_at);
+    if(sortParam === "likes") posts.sort((a, b) => b.likes.length - a.likes.length);
+    else{
+        posts.sort((a, b) => b.created_at - a.created_at);
+    }
     
 
    

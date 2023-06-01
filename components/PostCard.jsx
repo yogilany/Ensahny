@@ -111,7 +111,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCatego
               onClick={() => handleCategoryClick && handleCategoryClick(post.category)}
 
       >
-      {post.category? <span class=" cursor-pointer font-readex bg-gray-200 text-gray-800   text-[0.7rem] font-normal mr-2 px-2.5 py-0.5 rounded-full ">{post.category}</span> : null}
+      {post.category? <span className=" cursor-pointer font-readex bg-gray-200 text-gray-800   text-[0.7rem] font-normal mr-2 px-2.5 py-0.5 rounded-full ">{post.category}</span> : null}
       </p>
         {session && <LikeButton
           isAuthenticated={session?.user?.id ? true : false}

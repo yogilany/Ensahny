@@ -57,8 +57,8 @@ const Feed = () => {
       <form className="relative w-full max-w-2xl flex-center">
         <input
           type="text"
-          placeholder="Search"
-          className="search_input peer"
+          placeholder="بحث"
+          className="search_input peer "
           required
           onChange={handleSearchChange}
         />
@@ -67,7 +67,7 @@ const Feed = () => {
       {loading ? (
         <>
         
-        <div role="status" className=" flex-1 mt-24  text-center   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-12  backdrop-blur-lg backdrop-filter  w-full h-fit">
+        <div role="status" className=" flex-1 mt-16  text-center   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-12  backdrop-blur-lg backdrop-filter  w-full h-fit">
           <svg
             aria-hidden="true"
             className="inline w-24 h-24 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"

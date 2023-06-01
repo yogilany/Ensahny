@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import LikeButton from "@components/LikeButton";
+import Link from "next/link";
 
 const LeaderboardPost = ({
   post,
@@ -53,7 +54,10 @@ const LeaderboardPost = ({
 
   return (
     <div className=" text-center items-end flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-fit">
+            <Link href={post?.creator? `/profile/${post?.creator?._id}` : `/profile/${null}`} >
+
       <div className="flex justify-between items-center gap-0.5">
+
         <div className="flex flex-1 flex-col justify-center items-center gap-3 cursor-pointer">
           <Image
             src={post?.creator?.image}
@@ -64,7 +68,7 @@ const LeaderboardPost = ({
           />
           <div className="flex flex-col">
             <h3 className=" font-satoshi font-semibold text-sm  text-gray-900">
-              {post?.creator.username}
+            {post?.is_hidden ? "شخص مجهول" : post?.creator.username}
             </h3>
             {/* <p className=" font-inter text-xs text-gray-500">
               {post?.creator.email}
@@ -72,6 +76,8 @@ const LeaderboardPost = ({
           </div>
         </div>
       </div>
+      </Link>
+
       <p className="my-4 font-readex text-center text-md text-gray-700">
         {post.content}
       </p>
@@ -103,7 +109,7 @@ const LeaderboardPost = ({
         />
       </div>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {session?.user.id === post.creator?._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
