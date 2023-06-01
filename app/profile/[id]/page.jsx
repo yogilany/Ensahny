@@ -57,7 +57,7 @@ const MyProfile = ({ params }) => {
     params.id != "null" ?
     session && <Profile
       myProfile={params.id == session?.user.id   ? true : false}
-      desc='آهلاً بيك في بروفايلك الشخصي. هنا هتلاقي كل نصايحك السابقة واللي ممكن تعدلها أو تحذفها.'
+      desc={params.id == session?.user.id  ? 'أهلاً بيك في بروفايلك الشخصي. هنا هتلاقي كل نصايحك السابقة واللي ممكن تعدلها أو تحذفها.' : null }
       data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

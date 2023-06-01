@@ -110,9 +110,14 @@ const Feed = () => {
         />
       </form>
 
-<div class="text-sm font-medium text-center text-gray-500  border-gray-200 dark:text-gray-400 dark:border-gray-700">
+<div class="flex flex-row  items-center text-sm font-medium text-center text-gray-500  border-gray-200 dark:text-gray-400 dark:border-gray-700">
+<svg fill="none" className="w-4 h-4  mx-2" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"></path>
+</svg>
     <div class="overflow-x-scroll  max-w-sm sm:max-w-md md:max-w-xl  lg:max-w-4xl">
+  
     <ul className="flex flex-nowrap -mb-px">
+      
       {arabicCategories.map((category) => (
         <li className="mr-2 w-auto" key={category}>
           <button
@@ -127,6 +132,9 @@ const Feed = () => {
       ))}
     </ul>
     </div>
+    <svg fill="none" className="w-4 h-4 mx-2"  stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"></path>
+</svg>
 </div>
 
 

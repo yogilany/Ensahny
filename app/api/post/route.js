@@ -2,7 +2,10 @@ import { connectToDatabase } from "@utils/database";
 import Post from "@models/post";
 import { useSearchParams } from "next/navigation";
 
+let attempts = 0;
+
 export const GET = async (req, res) => {
+  while(attempts < 3){
   try {
     await connectToDatabase();
 
@@ -76,10 +79,14 @@ export const GET = async (req, res) => {
     return new Response(JSON.stringify(posts), {
       status: 200,
     });
+
+    break;
+
   } catch (err) {
     console.log("=> error while connecting with database: ", err);
     return new Response(JSON.stringify({ message: "Failed to fetch posts" }), {
       status: 500,
     });
   }
+}
 };

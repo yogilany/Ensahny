@@ -116,17 +116,17 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
         </p>
       </div>
 
-      <div className="flex justify-end">
-        <div className="mt-4  w-full space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3">
-          {data.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-              handleEdit={() => handleEdit && handleEdit(post)}
-              handleDelete={() => handleDelete && handleDelete(post)}
-            />
-          ))}
-        </div>
+      <div className="flex justify-start">
+      <div className="mt-4  justify-start w-full space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3 ">
+  {data.map((post) => (
+    <PostCard
+      key={post._id}
+      post={post}
+      handleEdit={() => handleEdit && handleEdit(post)}
+      handleDelete={() => handleDelete && handleDelete(post)}
+    />
+  ))}
+</div>
       </div>
     </section>
   );

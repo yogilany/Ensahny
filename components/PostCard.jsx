@@ -160,7 +160,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCatego
         
       </div>
 
-      {session?.user.id === post?.creator?._id && pathName === "/profile" && (
+      {session?.user.id === post?.creator?._id && (
         <div className=" flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
