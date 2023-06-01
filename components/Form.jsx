@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   const [selectedValue, setSelectedValue] = useState("");
