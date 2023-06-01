@@ -5,7 +5,7 @@ import { useState } from "react";
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
-  console.log("post", post);
+  // console.log("post", post);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -57,7 +57,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         </label>
         <label className="flex items-end flex-col">
           <span className="font-readex font-semibold text-base text-gray-700">
-            وسم
+            هاشتاج
           </span>
           
           <input
@@ -67,7 +67,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
             className="form_input "
-            placeholder="قم بإضافة وسم لنصيحتك"
+            placeholder="قم بإضافة هاشتاج لنصيحتك"
             required
           ></input>
         </label>

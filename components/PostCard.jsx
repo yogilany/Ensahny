@@ -67,7 +67,7 @@ const PostCard = ({
 
     if (elapsedTime < 60) {
       // Less than a minute
-      setTime(elapsedTime + " seconds ago");
+      setTime("Just now");
     } else if (elapsedTime < 3600) {
       // Less than an hour
       const minutes = Math.floor(elapsedTime / 60);
@@ -176,23 +176,7 @@ const PostCard = ({
         )}
       </div>
 
-      {/* {session?.user.id === post?.creator?._id &&
-        pathName === `/profile/${post?.creator?._id}` && (
-          <div className=" flex-center gap-4 border-t border-gray-100 pt-3">
-            <p
-              className="font-readex text-sm green_gradient cursor-pointer"
-              onClick={handleEdit}
-            >
-              تعديل
-            </p>
-            <p
-              className="font-readex text-sm orange_gradient cursor-pointer"
-              onClick={handleDelete}
-            >
-              إزالة
-            </p>
-          </div>
-        )} */}
+      
     </div>
   );
 };
