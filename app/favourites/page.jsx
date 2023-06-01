@@ -26,7 +26,7 @@ const Favouraites = () => {
 
   return (
     <section className='mt-8 mx-auto w-full max-w-5xl flex justify-center items-center flex-col gap-2'>
- <h1 className=" underline underline-offset-3 decoration-8 decoration-orange-600  h-20 mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-black   text-center   ">نصائحي المفضلة   
+ <h1 className="mb-8 underline underline-offset-3 decoration-8 decoration-pink-500  h-20 mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-black   text-center   ">نصائحي المفضلة   
         </h1>
         <p className="text-center desc font-readex font-light "> 
 هنا هتلاقي النصائح المفضلة ليك. تقدر ترجعلهم في أي وقت.
