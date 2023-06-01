@@ -22,7 +22,7 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
+      <a href="/" className="flex gap-2 flex-center">
         {/* <Image
           src="/assets/images/logo.svg"
           width={40}
@@ -35,7 +35,7 @@ const Nav = () => {
         <p className="h-12 font-bold font-readex text-2xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400 ">
           إنصحني
         </p>
-      </Link>
+      </a>
 
       {/* DESKTOP */}
       <div className=" sm:flex hidden">
@@ -90,8 +90,8 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <div className="flex gap-3 md:gap-5">
-              <Link href="/" className="outline_btn font-readex">
-                الصفحة الرئيسية
+              <Link href="/" className="black_btn font-readex">
+              أضف نصيحة
               </Link>
 
               {/* <Link href="/profile"> */}

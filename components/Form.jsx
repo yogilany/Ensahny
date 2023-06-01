@@ -92,7 +92,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           </span>
           <select
             required
-            className="form_input"
+            className="text-gray-500 w-full  flex rounded-lg mt-2 p-3  utline-0 text-right font-readex text-xs "
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
           >
@@ -102,6 +102,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 disabled
                 selected
                 value=""
+                className="text-gray-400"
               >
                 قم بإضافة فئة لنصيحتك. فيما تتعلق هذه النصيحة؟
               </option>

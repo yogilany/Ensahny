@@ -156,7 +156,7 @@ const Feed = () => {
 </svg>
 </div>
 
-<div>
+{ (categoryClicked || tagClicked) && <div>
 
 <p className="text-center desc font-readex font-light"> 
 {tagClicked && <span style={{direction: "ltr"}} id="badge-dismiss-dark" class="inline-flex items-center px-2 py-1.5 text-xs font-light text-pink-800 bg-pink-100 rounded mx-2 ">
@@ -173,31 +173,17 @@ const Feed = () => {
   </button>
 </span>}
 
-{ categoryClicked && <span style={{direction: "ltr"}} id="badge-dismiss-dark" class="inline-flex items-center px-2 py-1.5 text-xs font-light text-blue-800 bg-blue-100 rounded  mx-2">
-{categoryClicked ? categoryQuery : null}
 
-<button onClick={() => {
-  setCategoryClicked(false)
-  setCategoryQuery("")
-}} type="button" class="inline-flex items-center p-0.5 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
-      <svg aria-hidden="true" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-      <span class="sr-only">Remove badge</span>
-  </button>
-</span>}
 
 
         </p>
         <p className="text-center desc font-readex font-light"> 
 
 
-
-
-
-
         </p>
 
   
-</div>
+</div>}
 
 
       {loading ? (
