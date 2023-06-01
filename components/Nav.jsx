@@ -42,7 +42,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex gap-2 md:gap-2">
             <button
-              className="light_btn text-red-500"
+              className="light_btn text-black"
               type="button"
               onClick={() =>  signOut({
                 callbackUrl: `${window.location.origin}`
@@ -50,7 +50,10 @@ const Nav = () => {
             >
               تسجيل الخروج
             </button>
-            <Link href="/leaderboard" className="light_btn font-readex">
+            
+            <Link href="/leaderboard"                   
+            className=" primary_btn font-readex"
+>
             زاوية النصائح القيِّمة            </Link>
             <Link href="/favourites" className="light_btn font-readex ">
             نصائحي المفضلة
@@ -95,18 +98,32 @@ const Nav = () => {
               </Link>
 
               {/* <Link href="/profile"> */}
-              <Image
+              <svg                  onClick={() => setToggleDropdown((prev) => !prev)}
+ className=" w-7 h-7"fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+</svg>
+              {/* <Image
                 src={session?.user?.image}
                 width={30}
                 height={30}
                 alt="profile"
                 className="rounded-full"
                 onClick={() => setToggleDropdown((prev) => !prev)}
-              />
+              /> */}
               {/* </Link> */}
             </div>
             {toggleDropdown && (
               <div className="dropdown">
+                 <div class="py-3 text-sm text-gray-900 dark:text-white">
+                 <Image
+                src={session?.user?.image}
+                width={30}
+                height={30}
+                alt="profile"
+                className="rounded-full"
+                // onClick={() => setToggleDropdown((prev) => !prev)}
+              />
+    </div>
                 <Link href="/" className="dropdown_link">
                   الصفحة الرئيسية
                 </Link>
@@ -129,7 +146,7 @@ const Nav = () => {
                 </Link>
                 <Link
                   href="/leaderboard"
-                  className="dropdown_link"
+                  className="text-sm font-readex h-6 hover:text-gray-500 font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400"
                   onClick={() => setToggleDropdown(false)}
                 >
 زاوية النصائح القيِّمة                </Link>

@@ -85,12 +85,18 @@ p, h1, h2, h3, h4, h5, h6, span, textarea, input {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-xs font-readex flex items-center justify-center;
 }
 
+
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-xs font-readex flex items-center justify-center;
 }
 
+
 .light_btn {
   @apply rounded-full bg-transparent py-1.5 px-5 transition-all hover:bg-black hover:text-white text-center text-xs font-readex flex items-center justify-center;
+}
+
+.primary_btn {
+  @apply text-red-500 hover:text-white bg-gradient-to-br from-transparent to-transparent hover:from-pink-500 hover:to-orange-400  focus:ring-4 focus:outline-none focus:ring-pink-200  font-medium  text-xs px-5 py-2.5 text-center rounded-full ;
 }
 
 .head_text {
