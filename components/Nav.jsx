@@ -44,7 +44,9 @@ const Nav = () => {
             <button
               className="light_btn text-red-500"
               type="button"
-              onClick={signOut}
+              onClick={() =>  signOut({
+                callbackUrl: `${window.location.origin}`
+              })}
             >
               تسجيل الخروج
             </button>
@@ -137,7 +139,10 @@ const Nav = () => {
                   className="mt-5 w-full black_btn"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    signOut({
+                      callbackUrl: `${window.location.origin}`
+                    });
+                    
                   }}
                 >
                   تسجيل الخروج

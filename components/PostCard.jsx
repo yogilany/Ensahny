@@ -184,7 +184,7 @@ const PostCard = ({
         )}
       </div>
 
-      {session?.user.id === post?.creator?._id &&
+      {/* {session?.user.id === post?.creator?._id &&
         pathName === `/profile/${post?.creator?._id}` && (
           <div className=" flex-center gap-4 border-t border-gray-100 pt-3">
             <p
@@ -200,7 +200,7 @@ const PostCard = ({
               إزالة
             </p>
           </div>
-        )}
+        )} */}
     </div>
   );
 };
