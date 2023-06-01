@@ -5,7 +5,7 @@ import Footer from '@components/Footer';
 
 export const metadata = {
     title: "إنصحني",
-    description: "propmtoia description aaaaaaa",
+    description: "إنصحني هو موقع للنصائح والحكم والتجارب اللي بتساعد الناس تعدي الحياة بشكل أفضل.",
 }
 
 
