@@ -20,11 +20,7 @@ const Nav = () => {
     setNewProviders();
   }, []);
 
-  
   // if clicked outside of dropdown, close it
-
-
-
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -50,19 +46,20 @@ const Nav = () => {
             <button
               className="light_btn text-black"
               type="button"
-              onClick={() =>  signOut({
-                callbackUrl: `${window.location.origin}`
-              })}
+              onClick={() =>
+                signOut({
+                  callbackUrl: `${window.location.origin}`,
+                })
+              }
             >
               تسجيل الخروج
             </button>
-            
-            <Link href="/leaderboard"                   
-            className=" primary_btn font-readex"
->
-            زاوية النصائح القيِّمة            </Link>
+
+            <Link href="/leaderboard" className=" primary_btn font-readex">
+              زاوية النصائح القيِّمة{" "}
+            </Link>
             <Link href="/favourites" className="light_btn font-readex ">
-            نصائحي المفضلة
+              نصائحي المفضلة
             </Link>
 
             <Link href="/create-post" className="black_btn font-readex">
@@ -100,36 +97,54 @@ const Nav = () => {
           <div className="flex">
             <div className="flex gap-3 md:gap-5">
               <Link href="/create-post" className="black_btn font-readex">
-              أضف نصيحة
+                أضف نصيحة
+              </Link>
+              <Link href={`/profile/${session?.user.id}`}>
+                <Image
+                  src={session?.user?.image}
+                  width={30}
+                  height={30}
+                  alt="profile"
+                  className="rounded-full"
+                  onClick={() => setToggleDropdown((prev) => !prev)}
+                />
               </Link>
 
               {/* <Link href="/profile"> */}
-              <svg                  onClick={() => setToggleDropdown((prev) => !prev)}
- className=" w-7 h-7"fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-</svg>
-              {/* <Image
-                src={session?.user?.image}
-                width={30}
-                height={30}
-                alt="profile"
-                className="rounded-full"
+              <svg
                 onClick={() => setToggleDropdown((prev) => !prev)}
-              /> */}
+                className=" w-7 h-7 cursor-pointer"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                ></path>
+              </svg>
+
               {/* </Link> */}
             </div>
+
             {toggleDropdown && (
-              <div className="dropdown">
-                 <div class="py-3 text-sm text-gray-900 dark:text-white">
-                 <Image
-                src={session?.user?.image}
-                width={30}
-                height={30}
-                alt="profile"
-                className="rounded-full"
-                // onClick={() => setToggleDropdown((prev) => !prev)}
-              />
-    </div>
+              <div className="dropdown ">
+                <div class="py-3 text-sm text-gray-900 dark:text-white">
+                  {/* <Link href={`/profile/${session?.user.id}`}>
+                    <Image
+                      src={session?.user?.image}
+                      width={30}
+                      height={30}
+                      alt="profile"
+                      className="rounded-full"
+                      // onClick={() => setToggleDropdown((prev) => !prev)}
+                    />
+                  </Link> */}
+                </div>
                 <Link href="/" className="dropdown_link">
                   الصفحة الرئيسية
                 </Link>
@@ -155,15 +170,15 @@ const Nav = () => {
                   className="text-sm font-readex h-6 hover:text-gray-500 font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400"
                   onClick={() => setToggleDropdown(false)}
                 >
-زاوية النصائح القيِّمة                </Link>
+                  زاوية النصائح القيِّمة{" "}
+                </Link>
                 <button
                   className="mt-5 w-full black_btn"
                   onClick={() => {
                     setToggleDropdown(false);
                     signOut({
-                      callbackUrl: `${window.location.origin}`
+                      callbackUrl: `${window.location.origin}`,
                     });
-                    
                   }}
                 >
                   تسجيل الخروج
