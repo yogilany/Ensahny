@@ -8,14 +8,14 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
   const [userLikesCount, setUserLikesCount] = useState(0);
 
   const [loading, setLoading] = useState(true);
-  console.log("userData", user);
+  // console.log("userData", user);
 
   useEffect(() => {
     const fetchUser = async () => {
       setLoading(true);
       const response = await fetch(`/api/users/${user}`);
       const data = await response.json();
-      console.log("data", data);
+      // console.log("data", data);
 
       setUserData(data[0]);
       setLoading(false);
@@ -25,7 +25,7 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
       setLoading(true);
       const response = await fetch(`/api/users/${user}/likes`);
       const data = await response.json();
-      console.log("dataaaa", data);
+      // console.log("dataaaa", data);
 
       setUserLikesCount(data);
       setLoading(false);

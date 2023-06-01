@@ -20,7 +20,6 @@ const EditPost = () => {
         const getPostDetails = async () => {
             const res = await fetch(`/api/post/${postID}`)
             const data = await res.json()
-            console.log('dataaaaa 333', data)
             setPost({
                 content: data.content,
                 tag: data.tag,
@@ -37,9 +36,7 @@ const EditPost = () => {
     }, [postID])
 
 
-    useEffect(() => {
-        console.log(post)
-    }, [post])
+
         
     const updatePrompt = async (e) => {
         e.preventDefault();

@@ -12,7 +12,7 @@ const Leaderboard = () => {
         const fetchPosts = async () => {
             const res = await fetch(`/api/post?sort=likes&limit=10`)
             const data = await res.json()
-            console.log(data)
+            // console.log(data)
             setPosts(data)            
         }
         fetchPosts();

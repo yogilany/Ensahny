@@ -11,7 +11,7 @@ const MyProfile = ({ params }) => {
   const router = useRouter();
   const { data: session } = useSession();
   // console.log('otherUser', otherUser)
-  console.log('params', params)
+  // console.log('params', params)
 
 
 

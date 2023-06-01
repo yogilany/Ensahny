@@ -19,7 +19,7 @@ const CreatePost = () => {
     const createPost = async (e) => { 
         e.preventDefault()
         setSubmitting(true)
-        console.log('post', post)
+        // console.log('post', post)
 
         try{
             const res = await fetch('/api/post/new', {

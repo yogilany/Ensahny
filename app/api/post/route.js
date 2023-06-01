@@ -17,11 +17,11 @@ export const GET = async (req, res) => {
     const limitParam = params.get("limit");
     const categoryParam = params.get("category");
 
-    console.log("param", param);
-    console.log("tagParam", tagParam);
-    console.log("sortParam", sortParam);
-    console.log("limitParam", limitParam);
-    console.log("categoryParam", categoryParam);
+    // console.log("param", param);
+    // console.log("tagParam", tagParam);
+    // console.log("sortParam", sortParam);
+    // console.log("limitParam", limitParam);
+    // console.log("categoryParam", categoryParam);
 
 
 

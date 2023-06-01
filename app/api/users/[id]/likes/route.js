@@ -7,7 +7,7 @@ export const GET = async (request, { params }) => {
     await connectToDatabase();
 
     const userId = params.id;
-    console.log("userId", userId);
+    // console.log("userId", userId);
 
     const result = await Post.aggregate([
       {
