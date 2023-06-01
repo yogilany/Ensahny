@@ -23,8 +23,16 @@ const Leaderboard = () => {
 
   return (
     <section className='mt-8 mx-auto w-full max-w-4xl flex justify-center items-center flex-col gap-2 '>
- <h1 className=" underline underline-offset-3 decoration-8 decoration-orange-600  h-20 mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-black   text-center   ">لوحة الشرف  
+ <h1 className="mb-8 underline underline-offset-3 decoration-8 decoration-orange-600  h-20 mt-5 text-5xl font-extrabold leading-[1.15]  sm:text-6xl font-readex text-black   text-center   ">زاوية النصائح القيِّمة   
         </h1>
+        <p className="text-center desc font-readex font-light "> 
+هنا هتلاقي أكثر ١٠ نصائح تم تفضيلها من الناس. اقراها وشاركها مع أصحابك عشان تفيد أكبر عدد ممكن من الناس.
+
+
+
+
+
+        </p>
 <LeaderboardList
         posts={posts}
         handleTagClick={(e) => {

@@ -51,10 +51,9 @@ const Nav = () => {
               تسجيل الخروج
             </button>
             <Link href="/leaderboard" className="light_btn font-readex">
-              لوحة الشرف
-            </Link>
+            زاوية النصائح القيِّمة            </Link>
             <Link href="/favourites" className="light_btn font-readex ">
-              المفضلة
+            نصائحي المفضلة
             </Link>
 
             <Link href="/create-post" className="black_btn font-readex">
@@ -126,15 +125,14 @@ const Nav = () => {
                   أضف نصيحة
                 </Link>
                 <Link href="/favourites" className="dropdown_link">
-                  المفضلة
+                  نصائحي المفضلة
                 </Link>
                 <Link
                   href="/leaderboard"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  لوحة الشرف
-                </Link>
+زاوية النصائح القيِّمة                </Link>
                 <button
                   className="mt-5 w-full black_btn"
                   onClick={() => {
