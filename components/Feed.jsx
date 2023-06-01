@@ -93,7 +93,7 @@ const Feed = () => {
 
         var params = {
           param: searchQuery,
-          tag: tagQuery,
+          tag: categoryQuery,
           category: categoryQuery
         };
         

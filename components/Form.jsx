@@ -70,7 +70,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             {textareaLength}/{MAXCHARACTER}
           </span>
         </label>
-        <label className="flex items-end flex-col">
+        {/* <label className="flex items-end flex-col">
           <span className="font-readex font-semibold text-base text-gray-700">
             هاشتاج
           </span>
@@ -85,7 +85,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             placeholder="قم بإضافة هاشتاج لنصيحتك"
             required
           ></input>
-        </label>
+        </label> */}
         <label className="flex items-end flex-col">
           <span className="font-readex font-semibold text-base text-gray-700">
             فئة
@@ -93,8 +93,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           <select
             required
             className="form_input"
-            value={post.category}
-            onChange={(e) => setPost({ ...post, category: e.target.value })}
+            value={post.tag}
+            onChange={(e) => setPost({ ...post, tag: e.target.value })}
           >
             {
               // default value is the first element of the array

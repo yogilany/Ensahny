@@ -19,7 +19,7 @@ const CreatePost = () => {
     const createPost = async (e) => { 
         e.preventDefault()
         setSubmitting(true)
-        // console.log('post', post)
+        console.log('posttttttttttt', post)
 
         try{
             const res = await fetch('/api/post/new', {
@@ -29,7 +29,7 @@ const CreatePost = () => {
                     tag: post.tag,
                     is_hidden: post.is_hidden,
                     userId: session?.user.id,
-                    category: post.category
+                    category: post.tag
                 })
             })
 

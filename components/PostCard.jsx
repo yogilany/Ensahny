@@ -150,12 +150,7 @@ const PostCard = ({
       </div>
       <p className="my-4 font-readex text-sm text-gray-700" style={{whiteSpace: "pre-line"}}>{post.content}</p>
 
-      <p
-        className="font-readex text-xs blue_gradient cursor-pointer "
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        #{post.tag}
-      </p>
+    
       <div className="flex mt-2 flex-row justify-between items-center ">
         <p
           onClick={() =>
@@ -163,9 +158,12 @@ const PostCard = ({
           }
         >
           {post.category ? (
-            <span className=" cursor-pointer font-readex bg-gray-200 text-gray-800   text-[0.7rem] font-normal mr-2 px-2.5 py-0.5 rounded-full ">
-              {post.category}
-            </span>
+              <p
+              className="font-readex text-xs blue_gradient cursor-pointer "
+              onClick={() => handleTagClick && handleTagClick(post.tag)}
+            >
+              #{post.tag}
+            </p>
           ) : null}
         </p>
        
