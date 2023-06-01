@@ -116,7 +116,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         </div>
         <div className="flex-end mx-3 mb-5 gap-4">
           
-          <Link href={`/profile/${post?.creator._id}`} className="text-gray-500 text-sm font-readex">
+          <Link href={`/profile/${post?.creator?._id}`} className="text-gray-500 text-sm font-readex">
             
             إلـــغــــــــــــــــــاء
           </Link>
