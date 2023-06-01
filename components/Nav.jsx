@@ -90,7 +90,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <div className="flex gap-3 md:gap-5">
-              <Link href="/" className="black_btn font-readex">
+              <Link href="/create-post" className="black_btn font-readex">
               أضف نصيحة
               </Link>
 

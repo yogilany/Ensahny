@@ -57,7 +57,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           
           setTextareaLength(e.target.value.length)
           }}
-            className="form_textarea min-h-[100px]"
+            className="form_textarea min-h-[100px] "
             placeholder="قم بإضافة نصيحتك هنا"
             required
             maxLength={MAXCHARACTER}
