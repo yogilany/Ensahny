@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, Profiler } from "react";
+import { useState, useEffect, Profiler, useRef } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
+  const ref = useRef()
+  const refbuttton = useRef()
+
+
+
   const { data: session } = useSession();
 
   const [Providers, setProviders] = useState(null);
@@ -20,8 +25,30 @@ const Nav = () => {
     setNewProviders();
   }, []);
 
-  // if clicked outside of dropdown, close it
 
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (toggleDropdown && ref.current && !ref.current.contains(e.target)) {
+        setToggleDropdown(false)
+      }
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (toggleDropdown && ref.current && !ref.current.contains(e.target)) {
+        setToggleDropdown(false)
+      }
+
+
+    }
+
+    document.addEventListener("mousedown", checkIfClickedOutside)
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+  }, [toggleDropdown])
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <a href="/" className="flex gap-2 flex-center">
@@ -112,6 +139,7 @@ const Nav = () => {
 
               {/* <Link href="/profile"> */}
               <svg
+              ref={refbuttton}
                 onClick={() => setToggleDropdown((prev) => !prev)}
                 className=" w-7 h-7 cursor-pointer"
                 fill="none"
@@ -132,7 +160,7 @@ const Nav = () => {
             </div>
 
             {toggleDropdown && (
-              <div className="dropdown ">
+              <div className="dropdown " ref={ref}>
                 <div class="py-3 text-sm text-gray-900 dark:text-white">
                   {/* <Link href={`/profile/${session?.user.id}`}>
                     <Image
