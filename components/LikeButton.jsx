@@ -26,10 +26,13 @@ const LikeButton = ({ isLiked, OnClick, isAuthenticated, likesCount }) => {
   return (
     <button
       disabled={!isAuthenticated}
-      className={`  w-auto font-readex  disabled:bg-red-100 space-x-2 inline-flex items-center mt-2  rounded-lg  text-xs   font-normal py-2 px-2  ${
+      className={`  w-auto font-readex   space-x-2 inline-flex items-center mt-2  rounded-lg  text-xs   font-normal py-2 px-2  ${
+        isAuthenticated ?
+        (
         liked
-          ? " bg-gradient-to-r from-pink-500 to-orange-400  text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-orange-500"
-          : " bg-gradient-to-r from-pink-100 to-orange-100  text-red-500 hover:bg-gradient-to-r hover:from-pink-200 hover:to-orange-200 "
+          ? " bg-gradient-to-r from-pink-500 to-orange-400  text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-orange-500 disabled:bg-red-100"
+          : " bg-gradient-to-r from-pink-100 to-orange-100  text-red-500 hover:bg-gradient-to-r hover:from-pink-200 hover:to-orange-200 disabled:bg-red-100 ")
+          : " bg-gradient-to-r from-pink-100 to-orange-100  text-red-500"
       }`}
       onClick={handleClick}
     >

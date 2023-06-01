@@ -166,14 +166,14 @@ const PostCard = ({
             </span>
           ) : null}
         </p>
-        {session && (
+       
           <LikeButton
             isAuthenticated={session?.user?.id ? true : false}
             OnClick={handleLikeClick}
             likesCount={likesCount}
             isLiked={post?.likes?.some((like) => like == session?.user?.id)}
           />
-        )}
+        
       </div>
 
       
