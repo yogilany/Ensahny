@@ -114,7 +114,7 @@ const Feed = () => {
 <svg fill="none" className="w-4 h-4  mx-2" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"></path>
 </svg>
-    <div className="overflow-x-scroll max-w-xs  sm:max-w-md md:max-w-xl  lg:max-w-4xl">
+    <div className="overflow-x-scroll  overflow-y-hidden max-w-xs  sm:max-w-md md:max-w-xl  lg:max-w-4xl">
   
     <ul className="flex flex-nowrap -mb-px">
       
