@@ -14,6 +14,8 @@ const Feed = () => {
       toastClassName: 'my-custom-toast',
       bodyClassName: ' font-readex rtl_direction text-xs  ',
       autoClose: 3000, // Close the toast after 3 seconds
+      theme: "colored"
+
 
     });
 
