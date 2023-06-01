@@ -20,6 +20,12 @@ const Nav = () => {
     setNewProviders();
   }, []);
 
+  
+  // if clicked outside of dropdown, close it
+
+
+
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <a href="/" className="flex gap-2 flex-center">
