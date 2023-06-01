@@ -176,3 +176,12 @@ p, h1, h2, h3, h4, h5, h6, span, textarea, input {
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.my-custom-toast{
+  background-color: blue;
+  font-family: readex;
+}
+
+.rtl_direction {
+  direction: rtl;
+}

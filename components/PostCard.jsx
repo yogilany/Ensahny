@@ -8,6 +8,7 @@ import Link from "next/link";
 import Dropdown from "./Dropdown";
 
 const PostCard = ({
+  notify,
   post,
   handleTagClick,
   handleEdit,
@@ -29,6 +30,7 @@ const PostCard = ({
     setCopied(post.content);
     navigator.clipboard.writeText(post.content);
     setTimeout(() => setCopied(false), 3000);
+    notify();
   };
 
   function handleLikeClick() {
