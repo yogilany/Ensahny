@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import LikeButton from "@components/LikeButton";
 import Link from "next/link";
 
-const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const PostCard = ({ post, handleTagClick, handleEdit, handleDelete, handleCategoryClick }) => {
   const likesCount = post?.likes.length;
 
 
@@ -65,7 +65,11 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             height={12}
           />
         </div>
-        <Link href={`/profile/${post?.creator?._id}`}>
+        
+
+
+
+        <Link href={post?.creator? `/profile/${post?.creator?._id}` : `/profile/${null}`} >
 
         <div className="flex flex-1 justify-end items-center gap-3 cursor-pointer">
           <div className="flex flex-col  ">
@@ -95,13 +99,19 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       </div>
       <p className="my-4 font-readex text-sm text-gray-700">{post.content}</p>
      
-
-      <div className="flex flex-row justify-between items-center">
       <p
         className="font-readex text-xs blue_gradient cursor-pointer "
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         #{post.tag}
+      </p>
+      <div className="flex mt-2 flex-row justify-between items-center ">
+   
+      <p
+              onClick={() => handleCategoryClick && handleCategoryClick(post.category)}
+
+      >
+      {post.category? <span class=" cursor-pointer font-readex bg-gray-200 text-gray-800   text-[0.7rem] font-normal mr-2 px-2.5 py-0.5 rounded-full ">{post.category}</span> : null}
       </p>
         {session && <LikeButton
           isAuthenticated={session?.user?.id ? true : false}
@@ -112,7 +122,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         
       </div>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {session?.user.id === post?.creator?._id && pathName === "/profile" && (
         <div className=" flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"

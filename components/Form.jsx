@@ -1,6 +1,36 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const arabicCategories = [
+    "النجاح والتطوير الشخصي",
+    "الصحة والعافية",
+    "العلاقات والزواج",
+    "التعليم والتطوير العلمي",
+    "الوظائف والتوظيف",
+    "الأسرة والتربية",
+    "الشباب والمراهقة",
+    "الثقافة والفنون",
+    "الرياضة واللياقة البدنية",
+    "التكنولوجيا والابتكار",
+    "السفر والسياحة",
+    "الدين والروحانية",
+    "التغذية والطهي",
+    "الاستدامة والبيئة",
+    "الاستثمار والمالية",
+    "الفعاليات والتنظيم",
+    "الإدارة والقيادة",
+    "الذات والتأمل",
+    "الفنون الإبداعية",
+    "الأدب والكتابة",
+  ];
   return (
     <section className="w-full max-w-full  flex-col float-right">
       <h1 className="head_text text-right"> {type} </h1>
@@ -27,17 +57,48 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           <span className="font-readex font-semibold text-base text-gray-700">
             وسم
           </span>
+          
           <input
+          // limit the tag to 1 word
+            type="text"
+
             value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            className="form_input"
+            className="form_input "
             placeholder="قم بإضافة وسم لنصيحتك"
             required
           ></input>
         </label>
+        <label className="flex items-end flex-col">
+          <span className="font-readex font-semibold text-base text-gray-700">
+            فئة
+          </span>
+          <select
+            required
+            className="form_input"
+            value={post.category}
+            onChange={(e) => setPost({ ...post, category: e.target.value })}
+          >
+            {
+              // default value is the first element of the array
+              <option
+                disabled
+                selected
+                value=""
+              >
+                قم بإضافة فئة لنصيحتك. فيما تتعلق هذه النصيحة؟
+              </option>
+            }
+            {arabicCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </label>
         <div className="flex-end  mb-4">
           <label
-            for="default-checkbox"
+            htmlFor="default-checkbox"
             className="font-readex font-semibold text-base text-gray-700"
           >
             {" "}

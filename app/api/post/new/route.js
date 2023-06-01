@@ -3,7 +3,7 @@ import Post from "@models/post";
 import { ObjectId } from "mongodb";
 
 export const POST = async (req, res) => {
-  const { tag, content, userId, is_hidden } = await req.json();
+  const { tag, content, userId, is_hidden, category } = await req.json();
 
   try {
     connectToDatabase();
@@ -14,6 +14,7 @@ export const POST = async (req, res) => {
       tag,
       is_hidden,
       likes: [],
+      category
     });
 
     await newPost.save();

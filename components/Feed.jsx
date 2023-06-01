@@ -7,8 +7,12 @@ import { set } from "mongoose";
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [tagClicked, setTagClicked] = useState(false);
+  const [categoryClicked, setCategoryClicked] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [tagQuery, setTagQuery] = useState("");
+  const [categoryQuery, setCategoryQuery] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   function handleSearchChange(e) {
@@ -24,7 +28,8 @@ const Feed = () => {
 
         var params = {
           param: searchQuery,
-          tag: tagQuery
+          tag: tagQuery,
+          category: categoryQuery
         };
         
         // Convert the parameters object to a query string
@@ -35,6 +40,7 @@ const Feed = () => {
 
       const res = await fetch(url);
       const data = await res.json();
+      console.log(data);
       setPosts(data);
       setLoading(false);
 
@@ -44,7 +50,7 @@ const Feed = () => {
     console.log("Feed mounted");
     
 
-  }, [searchQuery, tagQuery]);
+  }, [searchQuery, tagQuery, categoryQuery]);
 
   return (
     <section className="mt-16 mx-auto w-full  max-w-5xl flex justify-center items-center flex-col gap-2">
@@ -92,6 +98,15 @@ const Feed = () => {
             }
             setTagQuery(e);
             setTagClicked(true);
+          }}
+          handleCategoryClick={(e) => {
+            if (categoryClicked) {
+              setCategoryQuery("");
+              setCategoryClicked(false);
+              return;
+            }
+            setCategoryQuery(e);
+            setCategoryClicked(true);
           }}
         />
       )}

@@ -12,13 +12,14 @@ const CreatePost = () => {
     const router = useRouter();
 
     const [submitting, setSubmitting] = useState(false)
-    const [post, setPost] = useState({  content: '', tag: '', is_hidden: false })
+    const [post, setPost] = useState({  content: '', tag: '', is_hidden: false, category:"" })
 
 
         
     const createPost = async (e) => { 
         e.preventDefault()
         setSubmitting(true)
+        console.log('post', post)
 
         try{
             const res = await fetch('/api/post/new', {
@@ -27,7 +28,8 @@ const CreatePost = () => {
                     content: post.content,
                     tag: post.tag,
                     is_hidden: post.is_hidden,
-                    userId: session?.user.id
+                    userId: session?.user.id,
+                    category: post.category
                 })
             })
 

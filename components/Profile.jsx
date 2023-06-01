@@ -79,35 +79,34 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
       <button
           type="button"
           disabled={true}
-          className="mt-5 text-gray-600 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center mr-2 mb-2"
+          className="flex flex-col justify-center items-center mt-5 text-gray-700 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center mr-2 mb-2"
         >
-          {" "}
+         
  
             
-            <span className="font-semibold">
+            <span className="font-semibold text-sm">
             {userLikesCount}
           </span>
-          {" "}
-          <span>
-           | تفضيــــــــلات          
+          <span className="font-normal text-gray-500">
+           تفضيــــــــلات          
           </span>
         </button>
         <button
           type="button"
           disabled={true}
-          className="mt-5 text-gray-600 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center  mb-2"
+          className="flex flex-col justify-center items-center mt-5 text-gray-700 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center mr-2 mb-2"
         >
-          {" "}
+         
  
             
-            <span className="font-semibold">
+            <span className="font-semibold text-sm">
             {data.length}
           </span>
-          {" "}
-          <span>
-           | نصائــــــــــــــح          
+          <span className="font-normal text-gray-500">
+          نصائــــــــــــــح          
           </span>
         </button>
+      
         
       </div>
 

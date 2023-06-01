@@ -23,7 +23,11 @@ const PostSchema = new Schema({
     created_at: {
         type: Date,
         default: Date.now,
-    }  
+    },
+    category: {
+        type: String,
+        required: [true, "Category is required"],
+    },
 
 
 });
