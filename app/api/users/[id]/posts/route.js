@@ -7,6 +7,7 @@ export const GET = async (request, { params }) => {
 
     const posts = await Post.find({ creator: params.id }).populate(
       "creator"
+    ).sort( { created_at: -1 }
     );
 
     return new Response(JSON.stringify(posts), { status: 200 });

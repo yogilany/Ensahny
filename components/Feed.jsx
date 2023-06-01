@@ -14,6 +14,41 @@ const Feed = () => {
   const [categoryQuery, setCategoryQuery] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleClick = (category) => {
+    if (selectedCategory === category) {
+      setSelectedCategory(null);
+      setCategoryQuery("")
+
+    } else {
+      setSelectedCategory(category);
+      setCategoryQuery(category)
+    }
+  };
+
+  const arabicCategories = [
+    "التطوير الشخصي",
+    "الصحة والعافية",
+    "العلاقات والزواج",
+    "التعليم والتطوير",
+    "الوظائف والتوظيف",
+    "الأسرة والتربية",
+    "الشباب والمراهقة",
+    "الثقافة والفنون",
+    "الرياضة واللياقة ",
+    "التكنولوجيا والابتكار",
+    "السفر والسياحة",
+    "الدين والروحانية",
+    "التغذية والطهي",
+    "الاستدامة والبيئة",
+    "الاستثمار والمالية",
+    "الفعاليات والتنظيم",
+    "الإدارة والقيادة",
+    "الذات والتأمل",
+    "الفنون الإبداعية",
+    "الأدب والكتابة",
+  ];
 
   function handleSearchChange(e) {
     e.preventDefault();
@@ -21,8 +56,19 @@ const Feed = () => {
     // setFilteredPosts(posts.filter(post => post.content.includes(e.target.value) || post.tag.includes(e.target.value)))
   }
 
+  function handleCategoryClick(e) {
+    if (categoryClicked) {
+      setCategoryQuery("");
+      setCategoryClicked(false);
+      return;
+    }
+    setCategoryQuery(e);
+    setCategoryClicked(true);
+  }
+
   useEffect(() => {
     const fetchPosts = async () => {
+      
         setLoading(true);
         var url = "/api/post";
 
@@ -50,10 +96,10 @@ const Feed = () => {
     console.log("Feed mounted");
     
 
-  }, [searchQuery, tagQuery, categoryQuery]);
+  }, [searchQuery, tagQuery, categoryQuery, ]);
 
   return (
-    <section className="mt-16 mx-auto w-full  max-w-5xl flex justify-center items-center flex-col gap-2">
+    <section className="mt-16 mx-auto w-full  max-w-6xl flex justify-center items-center flex-col gap-2">
       <form className="relative w-full max-w-2xl flex-center">
         <input
           type="text"
@@ -64,10 +110,30 @@ const Feed = () => {
         />
       </form>
 
+<div class="text-sm font-medium text-center text-gray-500  border-gray-200 dark:text-gray-400 dark:border-gray-700">
+    <div class="overflow-x-scroll  max-w-sm sm:max-w-md md:max-w-xl  lg:max-w-4xl">
+    <ul className="flex flex-nowrap -mb-px">
+      {arabicCategories.map((category) => (
+        <li className="mr-2 w-auto" key={category}>
+          <button
+            className={`font-normal text-gray-500 text-xs font-readex inline-block p-4 border-b-4 border-transparent rounded-t-lg hover:text-gray-800 hover:border-gray-300 ${
+              selectedCategory === category ? "text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400  border-red-300   border-b-2 " : ""
+            }`}
+            onClick={() => handleClick(category)}
+          >
+            {category}
+          </button>
+        </li>
+      ))}
+    </ul>
+    </div>
+</div>
+
+
       {loading ? (
         <>
         
-        <div role="status" className=" flex-1 mt-16  text-center   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-12  backdrop-blur-lg backdrop-filter  w-full h-fit">
+        <div role="status" className=" flex-1 mt-8  text-center   break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-12  backdrop-blur-lg backdrop-filter  w-full h-fit">
           <svg
             aria-hidden="true"
             className="inline w-24 h-24 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-orange-500"
@@ -99,15 +165,7 @@ const Feed = () => {
             setTagQuery(e);
             setTagClicked(true);
           }}
-          handleCategoryClick={(e) => {
-            if (categoryClicked) {
-              setCategoryQuery("");
-              setCategoryClicked(false);
-              return;
-            }
-            setCategoryQuery(e);
-            setCategoryClicked(true);
-          }}
+          handleCategoryClick={handleCategoryClick}
         />
       )}
     </section>

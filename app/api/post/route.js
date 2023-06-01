@@ -24,8 +24,8 @@ export const GET = async (req, res) => {
 
     // get the posts. if the post was is hidden, don't populate the creator else populate the creator
     const posts = await Post.find(
-        categoryParam ? { category: categoryParam }:
-        tagParam ? { tag: { $regex: tagParam, $options: "i" } } :
+        categoryParam ? { category: categoryParam,  is_hidden: false }:
+        tagParam ? { tag: { $regex: tagParam, $options: "i" },  is_hidden: false } :
 {
         $or: [
             { category: { $regex: param ? param : "", $options: "i" } },
@@ -34,17 +34,20 @@ export const GET = async (req, res) => {
 
         ],
         is_hidden: false,
-    })
-        .populate("creator")
+    }).populate("creator")
         .sort(
             sortParam ? { [sortParam]: -1, created_at: -1 } : { created_at: -1 }
           )
           .limit(limitParam ? parseInt(limitParam) : 100);
 
         // add the posts that are hidden put not the creator. don't return the creator
-    const hiddenPosts = await Post.find(
-      categoryParam ? { category: categoryParam }:
-      tagParam ? { tag: { $regex: tagParam, $options: "i" } } : 
+
+    
+        const hiddenPosts = await Post.find(
+      categoryParam ? { category: categoryParam , is_hidden: true,
+      }:
+      tagParam ? { tag: { $regex: tagParam, $options: "i" },  is_hidden: true,
+    } : 
       {
         $or: [
             { content: { $regex: param ? param : "", $options: "i" } },
@@ -57,6 +60,7 @@ export const GET = async (req, res) => {
         sortParam ? { [sortParam]: -1, created_at: -1 } : { created_at: -1 }
       )
       .limit(limitParam ? parseInt(limitParam) : 100);
+
 
     // add the hidden posts to the posts array
     posts.push(...hiddenPosts);

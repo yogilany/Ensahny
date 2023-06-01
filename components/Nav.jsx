@@ -22,7 +22,7 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
-      <Link href="/"   className="flex gap-2 flex-center">
+      <Link href="/" className="flex gap-2 flex-center">
         {/* <Image
           src="/assets/images/logo.svg"
           width={40}
@@ -40,20 +40,24 @@ const Nav = () => {
       {/* DESKTOP */}
       <div className=" sm:flex hidden">
         {session?.user ? (
-          <div className="flex gap-2 md:gap-3">
-            <Link href="/create-post" className="black_btn font-readex">
-              أضف نصيحة
-            </Link>
-            <Link href="/leaderboard" className="black_btn font-readex">
+          <div className="flex gap-2 md:gap-2">
+            <button
+              className="light_btn text-red-500"
+              type="button"
+              onClick={signOut}
+            >
+              تسجيل الخروج
+            </button>
+            <Link href="/leaderboard" className="light_btn font-readex">
               لوحة الشرف
             </Link>
-            <Link href="/favourites" className="black_btn font-readex ">
+            <Link href="/favourites" className="light_btn font-readex ">
               المفضلة
             </Link>
 
-            <button className="outline_btn" type="button" onClick={signOut}>
-              تسجيل الخروج
-            </button>
+            <Link href="/create-post" className="black_btn font-readex">
+              أضف نصيحة
+            </Link>
             <Link href={`/profile/${session?.user.id}`}>
               <Image
                 src={session?.user?.image}
@@ -106,8 +110,7 @@ const Nav = () => {
                   الصفحة الرئيسية
                 </Link>
                 <Link
-
-href={`/profile/${session?.user.id}`}
+                  href={`/profile/${session?.user.id}`}
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
@@ -120,10 +123,9 @@ href={`/profile/${session?.user.id}`}
                 >
                   أضف نصيحة
                 </Link>
-                <Link href="/favourites"                   className="dropdown_link"
->
-              المفضلة
-            </Link>
+                <Link href="/favourites" className="dropdown_link">
+                  المفضلة
+                </Link>
                 <Link
                   href="/leaderboard"
                   className="dropdown_link"

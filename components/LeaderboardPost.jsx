@@ -15,6 +15,7 @@ const LeaderboardPost = ({
   const likesCount = post?.likes.length;
 
   const [copied, setCopied] = useState("");
+  const [time, setTime] = useState("")
 
   const { data: session } = useSession();
 
@@ -51,6 +52,40 @@ const LeaderboardPost = ({
       throw Error(e.message);
     }
   }
+  
+
+  useEffect(() => {
+    const dateStr = post?.created_at;
+    const date = new Date(dateStr);
+    const now = new Date();
+    
+    const elapsedTime = Math.floor((now - date) / 1000); // Calculate elapsed time in seconds
+    
+    if (elapsedTime < 60) {
+      // Less than a minute
+      setTime(elapsedTime + " seconds ago");
+    } else if (elapsedTime < 3600) {
+      // Less than an hour
+      const minutes = Math.floor(elapsedTime / 60);
+      setTime(minutes + " minutes ago");
+    } else if (elapsedTime < 86400) {
+      // Less than a day
+      const hours = Math.floor(elapsedTime / 3600);
+      setTime(hours + " hours ago");
+    } else if (elapsedTime < 604800) {
+      // Less than a week
+      const days = Math.floor(elapsedTime / 86400);
+      setTime(days + " days ago");
+    } else {
+      // A week or more
+      const weeks = Math.floor(elapsedTime / 604800);
+      // conver it to arabic number 
+
+
+      setTime(weeks + " weeks ago");
+    }
+
+  }, []);
 
   return (
     <div className=" text-center items-end flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-fit">
@@ -60,16 +95,22 @@ const LeaderboardPost = ({
 
         <div className="flex flex-1 flex-col justify-center items-center gap-3 cursor-pointer">
           <Image
-            src={post?.creator?.image}
-            width={30}
+src={
+  post?.is_hidden
+    ? "/assets/images/unknown.png"
+    : post?.creator?.image
+}            width={30}
             height={30}
             alt="profile"
             className="rounded-full object-contain"
           />
           <div className="flex flex-col">
-            <h3 className=" font-satoshi font-semibold text-sm  text-gray-900">
+            <h3 className=" font-readex font-semibold text-sm  text-gray-900">
             {post?.is_hidden ? "شخص مجهول" : post?.creator.username}
             </h3>
+            <p style={{direction: "ltr"}} className=" font-inter text-xs text-gray-500 ">
+              {time? time : ""}
+            </p>
             {/* <p className=" font-inter text-xs text-gray-500">
               {post?.creator.email}
             </p> */}
