@@ -69,7 +69,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
         <div className="flex flex-1 justify-end items-center gap-3 cursor-pointer">
           <div className="flex flex-col  ">
-            <h3 className=" font-readex font-semibold text-gray-700">
+            <h3 className=" font-readex font-semibold text-sm text-gray-700">
               {post?.is_hidden ? "شخص مجهول" : post?.creator.username}
             </h3>
             

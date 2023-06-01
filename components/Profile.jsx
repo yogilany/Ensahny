@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
   const [userData, setUserData] = useState({});
+  const [userLikesCount, setUserLikesCount] = useState(0);
+
   const [loading, setLoading] = useState(true);
   console.log("userData", user);
 
@@ -19,12 +21,22 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
       setLoading(false);
     };
 
+    const fetchLikes = async () => {
+      setLoading(true);
+      const response = await fetch(`/api/users/${user}/likes`);
+      const data = await response.json();
+      console.log("dataaaa", data);
+
+      setUserLikesCount(data);
+      setLoading(false);
+    };
+    fetchLikes();
     fetchUser();
   }, []);
 
   return (
     <section className="w-full text-right items-end justify-end float-right">
-      {loading ? (
+      {/* {loading ? (
         <div
           role="status"
           className="flex justify-end "
@@ -58,11 +70,46 @@ const Profile = ({ myProfile, desc, data, handleEdit, handleDelete, user }) => {
             alt="Extra large avatar"
           />
         </div>
-      )}
+      )} */}
 
       <h1 className="head_text text-right">
-        <span className="orange_gradient">{myProfile ? "بروفايلي" : userData.username}</span>
+        <span className="orange_gradient">{userData.username}</span>
       </h1>
+      <div className="flex justify-end">
+      <button
+          type="button"
+          disabled={true}
+          className="mt-5 text-gray-600 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center mr-2 mb-2"
+        >
+          {" "}
+ 
+            
+            <span className="font-semibold">
+            {userLikesCount}
+          </span>
+          {" "}
+          <span>
+           | تفضيــــــــلات          
+          </span>
+        </button>
+        <button
+          type="button"
+          disabled={true}
+          className="mt-5 text-gray-600 font-readex bg-gradient-to-br from-gray-200 to-gray-300 focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-normal rounded-lg text-xs px-5 py-2 text-center  mb-2"
+        >
+          {" "}
+ 
+            
+            <span className="font-semibold">
+            {data.length}
+          </span>
+          {" "}
+          <span>
+           | نصائــــــــــــــح          
+          </span>
+        </button>
+        
+      </div>
 
       <div className="flex justify-end">
         <p className=" direc mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl font-readex text-right ">
