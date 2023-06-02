@@ -53,7 +53,7 @@ const CreatePost = () => {
                     content: post.content,
                     tag: post.tag,
                     is_hidden: post.is_hidden,
-                    userId: null,
+                    userId: session?.user.id,
                     category: post.tag
                 })
             })
