@@ -3,6 +3,7 @@ const PostSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         ref: "User",
+        required: [true, "Creator is required"],
     },
     content: {
         type: String,
@@ -15,6 +16,7 @@ const PostSchema = new Schema({
     likes:  {
         type: Schema.Types.Array,
         ref: "User",
+
     }, 
     is_hidden:  {
         type: Boolean,
