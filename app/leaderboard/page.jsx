@@ -10,9 +10,9 @@ const Leaderboard = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await fetch(`/api/post?sort=likes&limit=10`)
+            const res = await fetch(`/api/post/leaderboard`)
             const data = await res.json()
-            // console.log(data)
+            console.log(" leader data", data)
             setPosts(data)            
         }
         fetchPosts();

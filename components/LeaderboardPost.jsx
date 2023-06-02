@@ -12,7 +12,7 @@ const LeaderboardPost = ({
   handleEdit,
   handleDelete,
 }) => {
-  const likesCount = post?.likes.length;
+  const likesCount = post?.likes?.length;
 
   const [copied, setCopied] = useState("");
   const [time, setTime] = useState("")
@@ -106,7 +106,7 @@ src={
           />
           <div className="flex flex-col">
             <h3 className=" font-readex font-semibold text-sm  text-gray-900">
-            {post?.is_hidden ? "شخص مجهول" : post?.creator.username}
+            {post?.is_hidden ? "شخص مجهول" : post?.creator?.username}
             </h3>
             <p style={{direction: "ltr"}} className=" font-inter text-xs text-gray-500 ">
               {time? time : ""}
