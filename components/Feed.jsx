@@ -105,11 +105,10 @@ const Feed = () => {
 
       const res = await fetch(url);
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       // delete any post that do not have a creator 
-      const filteredData = data.filter((post) => post.creator !== null);
 
-      setPosts(filteredData);
+      setPosts(data);
       setLoading(false);
 
 
