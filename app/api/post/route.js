@@ -17,11 +17,11 @@ export const GET = async (req, res) => {
       const limitParam = params.get("limit");
       const categoryParam = params.get("category");
 
-      // console.log("param", param);
-      // console.log("tagParam", tagParam);
-      // console.log("sortParam", sortParam);
-      // console.log("limitParam", limitParam);
-      // console.log("categoryParam", categoryParam);
+      console.log("param", param);
+      console.log("tagParam", tagParam);
+      console.log("sortParam", sortParam);
+      console.log("limitParam", limitParam);
+      console.log("categoryParam", categoryParam);
 
       // get the posts. if the post was is hidden, don't populate the creator else populate the creator
       const posts = await Post.find(
@@ -31,24 +31,28 @@ export const GET = async (req, res) => {
           ? { tag: { $regex: tagParam, $options: "i" }, is_hidden: false }
           : {
               $or: [
-                { category: { $regex: param ? param : "", $options: "i" } },
+                // { category: { $regex: param ? param : "", $options: "i" } },
                 { content: { $regex: param ? param : "", $options: "i" } },
-                { tag: { $regex: param ? param : "", $options: "i" } },
+                // { tag: { $regex: param ? param : "", $options: "i" } },
               ],
               is_hidden: false,
             }
       )
+      .sort(
+        sortParam ? { "likes": -1, created_at: -1 } : { created_at: -1 }
+      )
         .populate("creator")
-        .sort(
-          sortParam ? { [sortParam]: -1, created_at: -1 } : { created_at: -1 }
-        )
+        
         .limit(limitParam ? parseInt(limitParam) : 100);
+
+        console.log("posts", posts);
+
 
       // add the posts that are hidden put not the creator. don't return the creator
       // delete any post that don't have a creator
-      const filteredData = posts.filter((post) => post.creator != null);
+      // const filteredData = posts.filter((post) => post.creator != null);
 
-      const hiddenPosts = await Post.find(
+       const hiddenPosts = await Post.find(
         categoryParam
           ? { category: categoryParam, is_hidden: true }
           : tagParam
@@ -68,15 +72,15 @@ export const GET = async (req, res) => {
         .limit(limitParam ? parseInt(limitParam) : 100);
 
       // add the hidden posts to the posts array
-      filteredData.push(...hiddenPosts);
+      !sortParam && posts.push(...hiddenPosts);
       // sort the posts by date
       if (sortParam === "likes")
-        posts.sort((a, b) => b.likes.length - a.likes.length);
+      posts.sort((a, b) => b.likes.length - a.likes.length);
       else {
         posts.sort((a, b) => b.created_at - a.created_at);
       }
 
-      return new Response(JSON.stringify(filteredData), {
+      return new Response(JSON.stringify(posts), {
         status: 200,
       });
 
