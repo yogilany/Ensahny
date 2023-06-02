@@ -137,7 +137,6 @@ const Nav = () => {
                 />
               </Link>
 
-              {/* <Link href="/profile"> */}
               <svg
               ref={refbuttton}
                 onClick={() => setToggleDropdown((prev) => !prev)}
@@ -216,6 +215,8 @@ const Nav = () => {
           </div>
         ) : (
           <>
+                        <div className="flex gap-3 md:gap-5">
+
             {Providers &&
               Object.values(Providers).map((provider, index) => (
                 <button
@@ -227,6 +228,58 @@ const Nav = () => {
                   تسجيل الدخول
                 </button>
               ))}
+                 <svg
+                onClick={() => setToggleDropdown((prev) => !prev)}
+                className=" w-7 h-7 cursor-pointer"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                ></path>
+              </svg>
+              </div>
+              {toggleDropdown && (
+              <div className="dropdown " ref={ref}>
+                <div class="py-3 text-sm text-gray-900 dark:text-white">
+                  {/* <Link href={`/profile/${session?.user.id}`}>
+                    <Image
+                      src={session?.user?.image}
+                      width={30}
+                      height={30}
+                      alt="profile"
+                      className="rounded-full"
+                      // onClick={() => setToggleDropdown((prev) => !prev)}
+                    />
+                  </Link> */}
+                </div>
+                <Link href="/" className="dropdown_link">
+                  الصفحة الرئيسية
+                </Link>
+            
+                <button
+                  className="dropdown_link"
+                  onClick={signIn}
+                >
+                  أضف نصيحة
+                </button>
+             
+                <Link
+                  href="/leaderboard"
+                  className="text-sm font-readex h-6 hover:text-gray-500 font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  زاوية النصائح القيِّمة{" "}
+                </Link>
+               
+              </div>
+            )}
           </>
         )}
       </div>

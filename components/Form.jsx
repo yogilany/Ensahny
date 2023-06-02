@@ -104,7 +104,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 value=""
                 className="text-gray-400"
               >
-                قم بإضافة فئة لنصيحتك. فيما تتعلق هذه النصيحة؟
+             فيما تتعلق هذه النصيحة؟
               </option>
             }
             {arabicCategories.map((category) => (

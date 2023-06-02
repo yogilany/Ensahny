@@ -210,7 +210,10 @@ const Feed = () => {
         </div>
         </>
       ) : (
-        <PostCardList
+
+        
+          posts?.length != 0 ?
+          <PostCardList
           posts={posts}
           notify={notify}
           handleTagClick={(e) => {
@@ -223,7 +226,17 @@ const Feed = () => {
             setTagClicked(true);
           }}
           handleCategoryClick={handleCategoryClick}
-        />
+        /> :
+        <div className="flex flex-col items-center justify-center my-8">
+        <p className="text-center desc font-readex font-medium">
+          لم يتم العثور على أي نصائح مطابقة لبحثك
+        </p>
+        <p className="text-center desc font-readex font-light">
+          جرب كلمات أخرى
+        </p>
+        </div>
+
+
       )}
 
     </section>
